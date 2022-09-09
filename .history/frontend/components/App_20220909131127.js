@@ -3,10 +3,11 @@ import TodoList from './TodoList';
 import Form from './Form'
 import axios from 'axios';
 
-
+const URL = 'http://localhost:9000/api/todos'
 
 const fetchToDo = () => {
- return axios.get('http://localhost:9000/api/todos')
+  console.log(axios.get(URL).data)
+  return axios.get(URL)
   .then(res => res)
   .catch(err=> console.error(err))
 }
@@ -15,21 +16,11 @@ export default class App extends React.Component {
  constructor(){
   super();
   this.state= {list: [{
-    name: 'Trash',
-    id: 0,
-    done: false
+   fetchToDo
   }]
 }
-
+fetchToDo()
  }
-
- componentDidMount(){
-  fetchToDo().then(res => {
-    this.setState({list: res.data.data})
-  })
- }
-
-
 
  addItem = (e, item) =>{
   e.preventDefault();

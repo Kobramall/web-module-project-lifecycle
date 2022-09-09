@@ -6,27 +6,17 @@ import axios from 'axios';
 
 
 const fetchToDo = () => {
- return axios.get('http://localhost:9000/api/todos')
-  .then(res => res)
-  .catch(err=> console.error(err))
+
 }
 
 export default class App extends React.Component {
  constructor(){
   super();
-  this.state= {list: [{
-    name: 'Trash',
-    id: 0,
-    done: false
-  }]
+  this.state= {list:   axios.get('http://localhost:9000/api/todos')
+  .then(res =>console.log(res.data.data))
+  .catch(err=> console.error(err))
 }
-
- }
-
- componentDidMount(){
-  fetchToDo().then(res => {
-    this.setState({list: res.data.data})
-  })
+console.log(fetchToDo())
  }
 
 

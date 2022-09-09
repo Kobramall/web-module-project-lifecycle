@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 const fetchToDo = () => {
- return axios.get('http://localhost:9000/api/todos')
+  axios.get('http://localhost:9000/api/todos')
   .then(res => res)
   .catch(err=> console.error(err))
 }

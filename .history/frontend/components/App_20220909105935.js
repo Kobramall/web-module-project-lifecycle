@@ -1,15 +1,8 @@
 import React from 'react'
 import TodoList from './TodoList';
 import Form from './Form'
-import axios from 'axios';
 
-
-
-const fetchToDo = () => {
- return axios.get('http://localhost:9000/api/todos')
-  .then(res => res)
-  .catch(err=> console.error(err))
-}
+const URL = 'http://localhost:9000/api/todos'
 
 export default class App extends React.Component {
  constructor(){
@@ -20,16 +13,7 @@ export default class App extends React.Component {
     done: false
   }]
 }
-
  }
-
- componentDidMount(){
-  fetchToDo().then(res => {
-    this.setState({list: res.data.data})
-  })
- }
-
-
 
  addItem = (e, item) =>{
   e.preventDefault();
@@ -55,8 +39,6 @@ clearPurchased = () => {
     if(item.done === false) return item
   })})
 }
-
-
 
  
   render() {
